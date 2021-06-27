@@ -87,13 +87,10 @@ router.get('/', (req, res) => {
 // @route GET api/mails/:id
 // @description Get single mails by id
 // @access Public
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   Mail.findById(req.params.id)
-    .then((mails) => {
-      SendMail(mails);
-      return res.json(mails);
-    })
-    .catch((err) => res.status(404).json({ nomailsfound: 'No mails found' }));
+    .then((mails) => res.json(mails))
+    .catch((err) => res.status(404).json({ nomailsfound: "No mails found" }));
 });
 
 // @route GET api/mails
